@@ -8,7 +8,7 @@ from std_msgs.msg import Float32, Int32, String
 
 class arduinoROS(object):
     def __init__(self):
-        self.active = False
+        self.active = True
         # =========== publisher ===========
         self.pub_tag = rospy.Publisher("/arduino/sub/servo", Int32, queue_size=10, latch=True)
         self.pub_goback = rospy.Publisher("~goback", Int32, queue_size=10)         
