@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: duckietown_phnix
+Description: Description of duckietown_phnix
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: 

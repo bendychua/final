@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: lane_filter
+Description: Description of lane_filter
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: 

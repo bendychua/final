@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: dagu_car
+Description: Description of dagu_car
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: duckietown_nctu_boonwee
+Description: Description of duckietown_nctu_boonwee
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: 

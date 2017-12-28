@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: little_waiter
+Description: Description of little_waiter
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: 

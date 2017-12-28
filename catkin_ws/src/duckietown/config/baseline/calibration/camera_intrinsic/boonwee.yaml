@@ -1,0 +1,23 @@
+camera_matrix:
+  cols: 3
+  data: [344.9380353687616, 0.0, 322.3884854277362, 0.0, 346.38461744695815, 252.73529297208788,
+    0.0, 0.0, 1.0]
+  rows: 3
+camera_name: boonwee/camera_node
+distortion_coefficients:
+  cols: 5
+  data: [-0.291014557519984, 0.07535235060173003, -0.000947886431164011, -0.001303670892602705,
+    0.0]
+  rows: 1
+distortion_model: plumb_bob
+image_height: 480
+image_width: 640
+projection_matrix:
+  cols: 4
+  data: [256.5374755859375, 0.0, 319.7415812647523, 0.0, 0.0, 288.47381591796875,
+    256.81645320164534, 0.0, 0.0, 0.0, 1.0, 0.0]
+  rows: 3
+rectification_matrix:
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+  rows: 3

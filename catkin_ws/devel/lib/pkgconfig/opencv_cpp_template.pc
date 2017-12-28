@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: opencv_cpp_template
+Description: Description of opencv_cpp_template
+Version: 0.0.0
+Cflags: -I/home/ubuntu/duckietown/catkin_ws/src/spring2016_nctu/trabant/opencv-cpp-template/include
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib -lapriltags
+Requires: 

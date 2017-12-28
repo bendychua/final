@@ -1,0 +1,15 @@
+(cl:defpackage duckietown_msgs-srv
+  (:use )
+  (:export
+   "SETVALUE"
+   "<SETVALUE-REQUEST>"
+   "SETVALUE-REQUEST"
+   "<SETVALUE-RESPONSE>"
+   "SETVALUE-RESPONSE"
+   "SETFSMSTATE"
+   "<SETFSMSTATE-REQUEST>"
+   "SETFSMSTATE-REQUEST"
+   "<SETFSMSTATE-RESPONSE>"
+   "SETFSMSTATE-RESPONSE"
+  ))
+

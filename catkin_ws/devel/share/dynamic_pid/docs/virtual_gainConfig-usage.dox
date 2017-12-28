@@ -1,0 +1,8 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_pid" pkg="dynamic_pid" type="dynamic_pid">
+  <param name="V_gain" type="double" value="0.1" />
+  <param name="W_gain" type="double" value="0.5" />
+</node>
+\endverbatim
+

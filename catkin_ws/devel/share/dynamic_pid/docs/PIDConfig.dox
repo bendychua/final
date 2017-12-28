@@ -1,0 +1,9 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~P_param" : \b [double] P parameter min: 0.0, default: 0.4, max: 1.0
+- \b "~I_param" : \b [double] I parameter min: 0.0, default: 0.02, max: 1.0
+- \b "~D_param" : \b [double] D parameter min: 0.0, default: 0.8, max: 1.0
+- \b "~Threshold_param" : \b [int] Threshold parameter min: 0, default: 2, max: 200
+

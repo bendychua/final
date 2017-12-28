@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: apriltags_ros
+Description: Description of apriltags_ros
+Version: 0.1.1
+Cflags: -I/home/ubuntu/duckietown/catkin_ws/src/apriltags_ros/apriltags_ros/include -I/home/ubuntu/code/build/include/eigen3
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib -lapriltag_detector
+Requires: apriltags image_transport roscpp sensor_msgs geometry_msgs duckietown_msgs tf cv_bridge message_runtime nodelet std_msgs

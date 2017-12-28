@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_pid" pkg="dynamic_pid" type="dynamic_pid">
+  <param name="P_param" type="double" value="0.4" />
+  <param name="I_param" type="double" value="0.02" />
+  <param name="D_param" type="double" value="0.8" />
+  <param name="Threshold_param" type="int" value="2" />
+</node>
+\endverbatim
+

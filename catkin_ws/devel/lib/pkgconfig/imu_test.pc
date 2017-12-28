@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/duckietown/catkin_ws/devel
+
+Name: imu_test
+Description: Description of imu_test
+Version: 0.0.0
+Cflags: -I/home/ubuntu/duckietown/catkin_ws/devel/include
+Libs: -L/home/ubuntu/duckietown/catkin_ws/devel/lib 
+Requires: duckietown_msgs roscpp rospy message_runtime
