@@ -11,8 +11,9 @@ class arduinoROS(object):
         self.active = True
         # =========== publisher ===========
         self.pub_tag = rospy.Publisher("/arduino/sub/servo", Int32, queue_size=10, latch=True)
-        self.pub_goback = rospy.Publisher("~goback", Int32, queue_size=10)         
-        self.pub_turnoff = rospy.Publisher("~turnoff", BoolStamped, queue_size=10)
+        self.pub_goback = rospy.Publisher("~goback", BoolStamped, queue_size=10)         
+        self.pub_turnoffarduino = rospy.Publisher("~turnoffarduino", BoolStamped, queue_size=10)
+        self.pub_turnoffapril = rospy.Publisher("~turnoffapril", BoolStamped, queue_size=10)
         # =========== subscriber ===========
         self.sub_tags = rospy.Subscriber("~tag_info", AprilTagDetectionArray, self.cbTags)
         self.sub_switch = rospy.Subscriber("~switch", BoolStamped, self.cbSwitch, queue_size=1)
@@ -31,8 +32,9 @@ class arduinoROS(object):
         minint = Int32()
         secint = Int32()
         now = Int32()
-        turnoff = BoolStamped()
-        goback = Int32()
+        turnoffarduino = BoolStamped()
+        goback = BoolStamped()
+        turnoffapril = BoolStamped()
 
         for detection in msg.detections:
             tag_id = detection.id
@@ -41,29 +43,32 @@ class arduinoROS(object):
             minstring = datetime.now().strftime("%M")
             secstring = datetime.now().strftime("%S")
 
-            print(hourstring, minstring, secstring)
+            print("Time in broken strings: ",hourstring, minstring, secstring)
 
             hourint = int(hourstring)
             minint = int(minstring)
             secint = int(secstring)
             now = hourint*60*60 + minint*60 +secint
-            print(now)
+            print("Time in seconds: ", now)
            
             if (tag_id == 2):
-                turnoff.data = True
-                self.pub_turnoff.publish(turnoff) #if back at the nurse
+                turnoffarduino.data = True
+                self.pub_turnoffarduino.publish(turnoffarduino) #if back at the nurse
             elif (tag_id == 115):
-                if (0 < now < 1): 
+            	turnoffapril.data = True
+            	self.pub_turnoffapril.publish(turnoffapril)
+                if (0 < now < 86340): 
                     med_ID = 0
                     print(med_ID)
                     self.pub_tag.publish(med_ID) #publish tag 0
                     #self.sub_tags.unregister()
-                elif (2 < now < 3):
+                elif (86341 < now < 86342):
                     med_ID = 1
+                    print(med_ID)
                     self.pub_tag.publish(med_ID) #publish tag 1
                     #self.sub_tags.unregister()
                 else:
-                    goback = 1
+                    goback.data = True
                     self.pub_goback.publish(goback) #if not time for any meds
             else:
                 return
