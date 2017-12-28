@@ -99,6 +99,7 @@ nodes:
   stop_line_filter_node: "stop_line_filter_node/switch"
   framerate_high: "camera_node/framerate_high_switch"
   timer: "timer_hercules/switch"
+  arduino_node: "arduino_node/switch"
 
 # Define state transitions
 states:

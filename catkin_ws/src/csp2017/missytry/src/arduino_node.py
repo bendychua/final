@@ -8,17 +8,21 @@ from std_msgs.msg import Float32, Int32, String
 
 class arduinoROS(object):
     def __init__(self):
-
+        self.active = False
         # =========== publisher ===========
         self.pub_tag = rospy.Publisher("/arduino/sub/servo", Int32, queue_size=10, latch=True)
         self.pub_goback = rospy.Publisher("~goback", Int32, queue_size=10)         
         self.pub_turnoff = rospy.Publisher("~turnoff", Int32, queue_size=10)
         # =========== subscriber ===========
         self.sub_tags = rospy.Subscriber("~tag_info", AprilTagDetectionArray, self.cbTags)
-
+        self.sub_switch = rospy.Subscriber("~switch", BoolStamped, self.cbSwitch, queue_size=1)
         # =========== subscribe tag information ===========
-    def cbTags(self, msg):
+    def cbSwitch(self, switch_msg):
+        self.active = switch_msg.data
 
+    def cbTags(self, msg):
+        if not self.active:
+            return
         med_ID = Int32()
         hourstring = String()
         minstring = String()
