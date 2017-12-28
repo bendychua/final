@@ -50,7 +50,7 @@ class arduinoROS(object):
             print(now)
            
             if (tag_id == 2):
-                turnoff = true
+                turnoff = True
                 self.pub_turnoff.publish(turnoff) #if back at the nurse
             elif (tag_id == 115):
                 if (0 < now < 1): 
