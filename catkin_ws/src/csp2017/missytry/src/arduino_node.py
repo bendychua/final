@@ -12,7 +12,7 @@ class arduinoROS(object):
         # =========== publisher ===========
         self.pub_tag = rospy.Publisher("/arduino/sub/servo", Int32, queue_size=10, latch=True)
         self.pub_goback = rospy.Publisher("~goback", Int32, queue_size=10)         
-        self.pub_turnoff = rospy.Publisher("~turnoff", Int32, queue_size=10)
+        self.pub_turnoff = rospy.Publisher("~turnoff", BoolStamped, queue_size=10)
         # =========== subscriber ===========
         self.sub_tags = rospy.Subscriber("~tag_info", AprilTagDetectionArray, self.cbTags)
         self.sub_switch = rospy.Subscriber("~switch", BoolStamped, self.cbSwitch, queue_size=1)
@@ -31,7 +31,7 @@ class arduinoROS(object):
         minint = Int32()
         secint = Int32()
         now = Int32()
-        turnoff = Int32()
+        turnoff = BoolStamped()
         goback = Int32()
 
         for detection in msg.detections:
@@ -50,7 +50,7 @@ class arduinoROS(object):
             print(now)
            
             if (tag_id == 2):
-                turnoff = 1
+                turnoff = true
                 self.pub_turnoff.publish(turnoff) #if back at the nurse
             elif (tag_id == 115):
                 if (0 < now < 1): 
