@@ -5,7 +5,7 @@
 	<arg name="config" default="baseline" />
 	<arg name="param_file_name" default="default" />
 	<arg name="apriltags_param_file_name" default="$(arg param_file_name)" />
-	<arg name="fsm_file_name" default="abc" />
+	<arg name="fsm_file_name" default="default" />
 	<arg name="visualization" default="true" />
 	<arg name="verbose" default="false" />
 	<arg name="statistics" default="false"/>
