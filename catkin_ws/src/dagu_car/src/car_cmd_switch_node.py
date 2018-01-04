@@ -24,7 +24,7 @@ class CarCmdSwitchNode(object):
         rospy.loginfo("[%s] Initialized. " %(self.node_name))
     def cbFSMState(self,fsm_state_msg):
         self.current_src_name = self.mappings.get(fsm_state_msg.state)
-        if self.current_src_name == "stop":
+        if fsm_state_msg.state == "DispensationMode":
             self.pubStop()
             rospy.loginfo("[%s] Car cmd switched to STOP in state %s." %(self.node_name,fsm_state_msg.state))
         elif self.current_src_name is None:

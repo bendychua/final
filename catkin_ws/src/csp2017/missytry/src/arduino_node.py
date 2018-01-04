@@ -14,13 +14,24 @@ class arduinoROS(object):
         self.pub_goback = rospy.Publisher("~goback", BoolStamped, queue_size=10)         
         self.pub_turnoffarduino = rospy.Publisher("~turnoffarduino", BoolStamped, queue_size=10)
         self.pub_turnoffapril = rospy.Publisher("~turnoffapril", BoolStamped, queue_size=10)
+        self.pub_changetolanefollow = rospy.Publisher("~changetolanefollow", BoolStamped, queue_size=10)
         # =========== subscriber ===========
         self.sub_tags = rospy.Subscriber("~tag_info", AprilTagDetectionArray, self.cbTags)
         self.sub_switch = rospy.Subscriber("~switch", BoolStamped, self.cbSwitch, queue_size=1)
+        self.sub_led = rospy.Subscriber("/arduino/pub/check", Int32, self.cbFSM)
         # =========== subscribe tag information ===========
     def cbSwitch(self, switch_msg):
         self.active = switch_msg.data
-
+    
+    def cbFSM (self, ledmsg):
+        self.dis=ledmsg.data
+        lanefollowID = BoolStamped()
+        lanefollowID.data = True
+        if self.dis == 1:
+            self.pub_changetolanefollow.publish(lanefollowID)
+        else:
+            return
+        
     def cbTags(self, msg):
         if not self.active:
             return
@@ -54,7 +65,7 @@ class arduinoROS(object):
             if (tag_id == 2):
                 turnoffarduino.data = True
                 self.pub_turnoffarduino.publish(turnoffarduino) #if back at the nurse
-            elif (tag_id == 115):
+            elif (tag_id == 114):
             	turnoffapril.data = True
             	self.pub_turnoffapril.publish(turnoffapril)
                 if (0 < now < 86340): 

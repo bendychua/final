@@ -14,6 +14,7 @@
 	<arg name="loc" default="-1"/>
 	<arg name="line_detector_param_file_name" default="$(arg param_file_name)"/>
 	<arg name="intersectionType" />
+	<arg name="local" default="false"/>
 	<!-- end basic args -->
  
 <!-- the things that are "on" by default: 
@@ -89,7 +90,7 @@
             <remap from="raw_cam_info_reader_node/compressed_image" to="camera_node/image/raw"/>
             <include file="$(find pi_camera)/launch/cam_info_reader_node.launch">
                 <arg name="veh" value="$(arg veh)"/>
-                <arg name="local" value="$(arg local)"/>
+                <arg name="local" value="$(arg local)"/> 
                 <arg name="config" value="$(arg config)"/>
                 <arg name="param_file_name" value="$(arg param_file_name)"/>
                 <arg name="node_name" value="raw_cam_info_reader_node" />
@@ -103,7 +104,7 @@
                 <remap from="image_rect_color" to="camera_node/image/rect" />
                 <include file="$(find pi_camera)/launch/image_proc_node.launch">
                     <arg name="veh" value="$(arg veh)"/>
-                    <arg name="local" value="$(arg local)"/>
+                    <arg name="local" value="$(arg local)"/> 
                 </include>
             </group>
         </group>
@@ -114,7 +115,7 @@
 	<!-- open serial between arduino and ROS -->
 	<group if="$(arg arduino)">
 		<remap from="arduino_node/tag_info" to="tag_detections" />
-		<include file="$(find missytry)/launch/arduino_node.launch" >
+		<include file="$(find missytry)/launch/arduino_node.launch">
 			<arg name="veh" value="$(arg veh)"/>
 		</include>
 	</group>
@@ -131,7 +132,7 @@
 		<remap from="camera_node/image/camera_info" to="camera_node/raw_camera_info" />
 		<include file="$(find apriltags_ros)/launch/apriltag_detector_node.launch">
 			<arg name="veh" value="$(arg veh)"/>
-			<arg name="local" value="$(arg local)"/>
+			<arg name="local" value="$(arg local)"/> 
 			<arg name="config" value="$(arg config)"/>
 			<arg name="param_file_name" value="$(arg param_file_name)"/>
 		</include>

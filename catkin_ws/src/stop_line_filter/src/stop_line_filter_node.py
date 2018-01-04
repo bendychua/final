@@ -28,7 +28,7 @@ class StopLineFilterNode(object):
         self.sub_mode      = rospy.Subscriber("fsm_node/mode",FSMState, self.processStateChange)
         self.pub_stop_line_reading = rospy.Publisher("~stop_line_reading", StopLineReading, queue_size=1)
         self.pub_at_stop_line = rospy.Publisher("~at_stop_line", BoolStamped, queue_size=1)
-
+        self.sub_switch    = rospy.Subscriber("~switch",BoolStamped, self.cbSwitch)
 
         self.params_update = rospy.Timer(rospy.Duration.from_sec(1.0), self.updateParams)
 
@@ -52,14 +52,17 @@ class StopLineFilterNode(object):
             self.sleep = False
             rospy.loginfo("stop line sleep end")
         self.state=msg.state
+        #print ("test state")
 
     def cbSwitch(self, switch_msg):
+        rospy.sleep(2)
         self.active = switch_msg.data
 
     def processLanePose(self, lane_pose_msg):
         self.lane_pose = lane_pose_msg
 
     def processSegments(self, segment_list_msg):
+        #print ("test_segment")
         if not self.active or self.sleep:
             return
         good_seg_count=0
