@@ -62,7 +62,7 @@ class arduinoROS(object):
             now = hourint*60*60 + minint*60 +secint
             print("Time in seconds: ", now)
            
-            if (tag_id == 2):
+            if (tag_id == 166):
                 turnoffarduino.data = True
                 self.pub_turnoffarduino.publish(turnoffarduino) #if back at the nurse
             elif (tag_id == 114):
